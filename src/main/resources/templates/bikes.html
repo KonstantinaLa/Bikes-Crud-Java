@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Bikes</title>
+    <link
+      th:rel="stylesheet"
+      th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "
+    />
+  </head>
+  <body>
+    <div class="container text-center mt-4">
+      <h3><a th:href="@{/}" class="mt-2">Home</a></h3>
+      <a
+        th:href="@{/bikes/create}"
+        type="button"
+        class="btn btn-info m-3 float-right"
+        >Create</a
+      >
+
+      <div>
+        <table class="table table-striped table-bordered">
+          <thead class="thead-dark">
+            <tr>
+              <th>Model</th>
+              <th>Brand</th>
+              <th>Electric</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="bike: ${Abikes}">
+              <td th:text="${bike.getModel()}"></td>
+              <td th:text="${bike.getBrand()}"></td>
+              <td>
+                <input
+                  type="checkbox"
+                  th:checked="${bike.getElectric()}"
+                  disabled
+                />
+              </td>
+              <td>
+                <a
+                  type="button"
+                  class="btn btn-warning"
+                  href="#"
+                  th:href="@{'/bikes/' + 'update/'+ ${bike.getId()}}"
+                  >Edit</a
+                >
+                <a
+                  type="button"
+                  class="btn btn-danger"
+                  href="#"
+                  th:href="@{'/bikes/'+ 'delete/' + ${bike.getId()} }"
+                  >Delete</a
+                >
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>

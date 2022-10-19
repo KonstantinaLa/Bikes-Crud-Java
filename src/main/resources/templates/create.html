@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Create</title>
+    <link
+      th:rel="stylesheet"
+      th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "
+    />
+  </head>
+  <body>
+    <div class="container mt-4">
+      <div class="text-center">
+        <h3><a th:href="@{/}">Home</a></h3>
+        <h3><a th:href="@{/bikes}">View all Bikes</a></h3>
+      </div>
+      <form th:action="@{/bikes/create}" th:object="${bike}" method="post">
+        <div class="form-group">
+          <label for="model">Model</label>
+          <input
+            type="text"
+            class="form-control"
+            id="model"
+            name="model"
+            placeholder="Enter the model"
+          />
+        </div>
+        <div class="form-group">
+          <label for="brand">Brand</label>
+          <input
+            type="text"
+            class="form-control"
+            id="brand"
+            name="brand"
+            placeholder="Enter the brand"
+          />
+        </div>
+        <div class="form-check">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="electric"
+            name="electric"
+          />
+          <label class="form-check-label" for="electric" height="30" width="30"
+            >Electric</label
+          >
+        </div>
+        <button type="submit" class="btn btn-primary mt-5">Submit</button>
+      </form>
+    </div>
+  </body>
+</html>
